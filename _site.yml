@@ -3,6 +3,7 @@ title: "Webscraping Pet Population"
 description: |
   Webscraping Pet Population
 output_dir: "docs"
+base_url: https://cornelisonj.github.io/
 navbar:
   right:
     - text: "Home"
