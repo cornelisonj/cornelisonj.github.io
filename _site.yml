@@ -1,9 +1,8 @@
 name: "cornelisonj.github.io"
-title: "Webscraping Pet Population"
+title: "Catchy Blog Name"
 description: |
-  Webscraping Pet Population
+  Catchy Blog Name
 output_dir: "docs"
-base_url: https://cornelisonj.github.io/
 navbar:
   right:
     - text: "Home"

@@ -1,5 +1,5 @@
 ---
-title: "Webscraping Pet Population"
+title: "Catchy Blog Name"
 site: distill::distill_website
 listing: posts
 ---
