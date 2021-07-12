@@ -1,0 +1,58 @@
+---
+title: "For Each Loop In JavaScript"
+description: |
+  A new tool I learned to help with mapping.
+author:
+  - name: John Cornelison
+    url: {}
+date: 07-09-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## The For Each Loop
+
+The for Each loop differs from the for loop in that the for Each loop takes an array and iterates through each object in the array. 
+
+### The Problem
+
+One of the many obstacles that cam up while working on the data tool was to find a way to delete the columns from the spreadsheet that we didn't want. 
+
+When uploading the data from google sheets to Big Query, Google Apps Script can use an auto_detect = true or false to determine the schema. 
+
+In our data tool, we have a sheet for mapping the data. A lot of animal shelter we are working with use Pet Point, a data management software for Animal Shelters. However, not all of the animal shetlers we work with use it, so we need to find map the data from the format the shelters have to a common format in our data warehouse. That is where the mapping sheet comes in handy.  
+
+![picture of mapping sheet](C:/Users/johnc/Documents/BYUI/School/Spring 2021/Senior Project/cornelisonj.github.io/_posts/2021-07-09-for-each-loop-in-javascript/blog_post_three_image_one.PNG "Mapping Sheet")
+
+The picture above shows one of our mapping sheets. The columns on the left come from Pet Point's data management system, and the columns on the right are the columns that we want to map. That way, we can aggragate all of the data comming in from different animal shelters.
+
+To use the mapping tool, simply type in the new column name in the right column, and the column on the left will change to the new name when run through the data load tool. As you can see, there are some blanks on the right column. These blanks refer to columns that we do not want. 
+
+Now, back to the problem. When I would load the data tool, the columns would map over, but I could not find a way to delete the columns we did not want in a dynamic way. The for Each loop helped me solve the problem.
+
+![picture of my for each loop](C:/Users/johnc/Documents/BYUI/School/Spring 2021/Senior Project/cornelisonj.github.io/_posts/2021-07-09-for-each-loop-in-javascript/blog_post_three_image_two.PNG "For Each Loop")
+
+The for Each loop is special because it is like a call back function. It takes an array then passes each value of the array through the loop. The loop has a function in it. For example, in my loop I created a function that checks to see if the value is blank or not. If it is blank, then it grabs the index value and deletes the column associated with the index number.
+
+To conclude my post, I want to share with you a couple of important notes I needed to figure out in order for the for Each loop to work. 
+
+  * The array must be a one dimensional array. 
+  * When you delete a column, the index of the entire array will change
+
+Have fun making a for Each loop!
+
+
+
+
+
+
+
+### 
+

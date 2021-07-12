@@ -3,17 +3,17 @@
     {
       "path": "about.html",
       "title": "About this blog",
-      "description": "Some additional details about the blog",
+      "description": "This is a blog of some of the things I learned during my senior project.",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-07-06T14:04:34-05:00"
+      "last_modified": "2021-07-12T11:24:57-05:00"
     },
     {
       "path": "index.html",
-      "title": "Catchy Blog Name",
+      "title": "Animal Shelter Research Project",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-07-06T14:12:31-05:00"
+      "last_modified": "2021-07-12T11:25:18-05:00"
     }
   ],
   "collections": ["posts/posts.json"]

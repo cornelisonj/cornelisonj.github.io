@@ -1,33 +1,24 @@
----
-title: "Webscraping With Python"
-description: |
-  Python can be a great tool for webscraping
-author:
-  - name: John Cornelison 
-date: 07-06-2021
-output:
-  distill::distill_article:
-    self_contained: false
----
+Animal Shelter Research ProjectHome About
+Webscraping With Python
+Python can be a great tool for webscraping.
 
-```{r setup, include=FALSE}
-library(reticulate)
+AUTHOR
+John Cornelison
 
-# Learn more about creating blogs with Distill at:
-# https://rstudio.github.io/distill/blog.html
+ 
 
-```
+PUBLISHED
+July 6, 2021
 
-
-## The Packages
+The Packages
 There are three packages that help with scraping websites using python, Beautiful Soup Selenium, and Scrapy.
 
-### Beautiful Soup
+Beautiful Soup
 If the webscraping you plan on doing is small, then Beautiful Soup is very useful. Beautriful Soup helps you get started scraping right away.
 
 There are different ways to webscrap sites. For example, in r, I like to use the rvest package the css selector google chrome extention. Beautiful soup on the other hand, scrapes by parsing directly from the HTML.
 
-```{python echo = TRUE}
+
 html_doc = """
 <html><head><title>The Dormouse's story</title></head>
 <body>
@@ -41,37 +32,70 @@ and they lived at the bottom of a well.</p>
 
 <p class="story">...</p>
 """
-```
 
-
-```{python echo = TRUE}
 from bs4 import BeautifulSoup
 soup = BeautifulSoup(html_doc, 'html.parser')
 
-
 print(soup.prettify())
+<html>
+ <head>
+  <title>
+   The Dormouse's story
+  </title>
+ </head>
+ <body>
+  <p class="title">
+   <b>
+    The Dormouse's story
+   </b>
+  </p>
+  <p class="story">
+   Once upon a time there were three little sisters; and their names were
+   <a class="sister" href="http://example.com/elsie" id="link1">
+    Elsie
+   </a>
+   ,
+   <a class="sister" href="http://example.com/lacie" id="link2">
+    Lacie
+   </a>
+   and
+   <a class="sister" href="http://example.com/tillie" id="link3">
+    Tillie
+   </a>
+   ;
+and they lived at the bottom of a well.
+  </p>
+  <p class="story">
+   ...
+  </p>
+ </body>
+</html>
 
 print(soup.title)
+<title>The Dormouse's story</title>
 print(soup.title.name)
+title
 print(soup.title.string)
+The Dormouse's story
 print(soup.title.parent.name)
+head
 print(soup.p)
+<p class="title"><b>The Dormouse's story</b></p>
 print(soup.p['class'])
+['title']
 print(soup.a)
+<a class="sister" href="http://example.com/elsie" id="link1">Elsie</a>
 print(soup.find(id="link3"))
-```
-
-### Selenium
-
-If the websites you are scraping need logins, then Selenium is very useful. Selenium acts as a bot to go through the login and allow you to start scraping the websites that require authentification
+<a class="sister" href="http://example.com/tillie" id="link3">Tillie</a>
+Selenium
+If the websites you are scraping needs logins, then Selenium is very useful. Selenium acts as a bot to go through the login and allow you to start scraping the websites that require authentification
 
 I did not use Selenium during my senior project, so I will just put a link to Selenium’s documentation website. Click here
 
-### Scrapy
-
+Scrapy
 Scrapy is my personal favorite. Scrapy is not as user friendly as the other packages, but their is so much that you can do with Scrapy. Below is an example of using a spider to scrape quotes from http://quotes.toscrape.com.
 
-```{python echo = TRUE}
+
 import scrapy
 
 
@@ -91,12 +115,17 @@ class QuotesSpider(scrapy.Spider):
         next_page = response.css('li.next a::attr("href")').get()
         if next_page is not None:
             yield response.follow(next_page, self.parse)
-```
-
 The code above needs to be saved as a .py file. I named it quotes_spider. Once the file is saved, to run the spider, we use the following code in the command terminal.
 
-```scrapy runspider quotes_spider.py -o quotes.jl```
+scrapy runspider quotes_spider.py -o quotes.jl
 
 This scrapes the author and text of the quotes. If there is another page, it will scrape the same information from it. It then stores the information we scraped in a JSON Lines format file called quotes.
+
+the contents of the quotes.jl file should look like this…
+
+“{”author“:”Jane Austen“,”text“:”
+{“author”: “Steve Martin”, “text”: "
+{“author”: “Garrison Keillor”, “text”: "
+There is too much to Scrapy for me to cover it all here. If you have access to LinkedIn Learning, they have a wonderful tutorial on webscraping with Scrapy. Click here
 
 I hope you enjoy your next webscraping adventure!
